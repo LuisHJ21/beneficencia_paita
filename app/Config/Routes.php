@@ -103,10 +103,16 @@ $routes->group('admin',function($routes)
 	$routes->add('mensajes','Mensajesadmin::index');
 
 	$routes->add('serfin','Serfinadmin::index');
+	$routes->add('serfin/guardarservicio','Serfinadmin::guardarservicio');
+	$routes->add('serfin/guardarmensualidad','Serfinadmin::guardarmensualidad');
+	$routes->add('serfin/guardarrequisitos','Serfinadmin::guardarrequisitos');
+	$routes->add('serfin/subirimagen','Serfinadmin::subirimagen');
 
 	$routes->add('nichos','Nichosadmin::index');
 	$routes->add('nichos/agregar','Nichosadmin::agregar');
 	$routes->add('nichos/editarprecio','Nichosadmin::editarprecio');
+	$routes->add('nichos/subirimagen','Nichosadmin::subirimagen');
+
 
 	$routes->add('usuarios','Usuariosadmin::index');
 	$routes->add('usuarios/actualizar','Usuariosadmin::actualizar');

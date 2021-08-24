@@ -16,8 +16,11 @@
       <div class="row">
         <div class="col-12 col-md-6">
 
-        <img src="https://www.coronasfunebresadomicilio.com/wp-content/uploads/2018/10/Arreglo-Fúnebre-Mixto-Blancoo.jpg" alt="" class="img-fluid h-100">
+          <?php if(!$servicio['imagen']){ ?>
+            <img src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="" class="img-fluid h-100">
+            <?php } ?>
 
+            <img src="<?php echo $servicio['imagen'] ?>" alt="" class="img-fluid h-100">
         </div>
 
         <div class="col-12 col-md-6">
@@ -34,26 +37,16 @@
                   <h5 class=" color-principal">Servicios a brindar</h5>
                   
                   <div class="servicio-contenido">
-                      <ul>
-                        <li>Nicho en quinta fila</li>
-                        <li>Ataud tipo biblia o imperial de madera</li>
-                        <li>Servicio de capilla ardiente</li>
-                        <li>arreglo floral</li>
-                        <li>carroza funebre</li>
-                        <li>Aviso Por Radio</li>
-                      </ul>
+                      <?php echo $serfin['brinda'] ?>
                   </div>
                 </div>
                 <hr class="hr-color">
 
                 <div class="brindar pb-5">
-                  <h5 class=" color-principal">Menusalidad</h5>
+                  <h5 class=" color-principal">Mensualidad</h5>
                   
                   <div class="servicio-contenido">
-                      <ul>
-                        <li>Cuota Mensual: S/ 25.00</li>
-                        <li>Si hay beneficiarios mayores a 60 años se incrementara el 40% de la cuota mensual</li>
-                      </ul>
+                    <?php echo $serfin['mensualidad'] ?>
                   </div>
                 </div>
 
@@ -62,10 +55,8 @@
                 <div class="requisitos mb-5">
                   <h5 class=" font-weight-bold color-principal">Requisitos:</h5>
                   <div class="servicio-contenido">
-                    <ul>
-                      <li>Copias de DNI del titular y Beneficiarios</li>
-                      <li>Inscripcion de S/25.00</li>
-                    </ul>
+                    <?php echo $serfin['requisitos'] ?>
+
                   </div>
                 </div>
 

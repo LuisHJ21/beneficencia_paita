@@ -101,12 +101,37 @@
                    <h4 class="text-center">Imagen</h4>
                </div>
                <div class="card-body">
-                    <img  class="img-fluid" src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="">
-               </div>
+               <?php if(!$servicio['imagen']){ ?>
+                        <img src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="" class="img-fluid">
+                        <?php } ?>
+
+                        <img src="<?php echo $servicio['imagen'] ?>" alt="" class="img-fluid">
+                        
+                        <hr>
+                        <?php if($session->successimg ){  ?>
+
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $session->successimg?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <?php } ?>
+
+                        <?php if($session->errorimg){  ?>
+
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $session->errorimg?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <?php } ?>               </div>
                <div class="card-footer container">
                    <div class="row">
                        <div class="col-12">
-                           <button class="btn btn-block btn-success"><i class="fas fa-upload mr-1"></i>Subir Imagen</button>
+                           <button onclick="mdlModificarImagen()" class="btn btn-block btn-success"><i class="fas fa-upload mr-1"></i>Subir Imagen</button>
                         </div>
                    </div>
 
@@ -340,6 +365,50 @@
 </div>
 
 
+  <!-- Modal Agregar Imagen-->
+  <div class="modal fade" id="agregarImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Imagen </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="subirimagen" method="POST" enctype="multipart/form-data" action="<?php echo base_url() ?>/admin/nichos/subirimagen" autocomplete="off">
+        <input hidden="true" type="text" class="form-control" id="idagregarimagen" name="idagregarimagen"  required> 
+          
+          <div class="form-group">
+            <input type="file" class="form-control-file" name="imagensubir" required>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+      <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-4">
+                    <div hidden class="animacion" id="animacion">
+                    <i class="fas fa-spin fa-sync"></i> Subiendo Imagen...
+                    </div>
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-2">
+                    <button id="cancelar" type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class="col-md-2">
+                    <button id="imagensubir" onclick="subirimagen()" type="button" class="btn btn-success">Guardar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <script>
 
@@ -359,5 +428,26 @@ function mdlAgregar(tipo)
     $('#precioeditar').val(precio);
 
    
+  }
+
+
+  function mdlModificarImagen()
+  {
+    $('#agregarImagen').modal('show');
+   
+  }
+
+  function subirimagen()
+  {
+      animacion=document.getElementById("animacion");
+      
+      btn2=document.getElementById("cancelar");
+      img=document.getElementById("imagensubir");
+      
+      
+      animacion.removeAttribute("hidden");
+      $('#subirimagen').submit();
+      btn2.setAttribute("disabled","");
+      img.setAttribute("disabled","");
   }
 </script>

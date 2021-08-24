@@ -35,8 +35,11 @@
             </div>
             <div class="col-12 col-md-6 pb-5">
 
-                <img src="https://i0.wp.com/oscarmoreno.com/wp-content/uploads/2019/11/pruebas-de-rendimiento.jpg?fit=1280%2C811" alt="" class="img-fluid">
-               
+            <?php if(!$servicio['imagen']){ ?>
+            <img src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="" class="img-fluid h-100">
+            <?php } ?>
+
+            <img src="<?php echo $servicio['imagen'] ?>" alt="" class="img-fluid h-100">               
             </div>
             <div class="col-12 col-md-6 pb-5">
                 <h4 class="color-principal text-center">Nichos Parvulos</h4>

@@ -4,17 +4,22 @@ namespace App\Controllers;
 use CodeIgniter\Controllers;
 
 use App\Models\NichosModel;
+use App\Models\ServiciosModel;
 
 
 class Nichos extends BaseController
 {
 
 	protected $nichos;
+	protected $servicio;
+
 
 	public function __construct()
 	{
 		
 		$this->nichos=new NichosModel();
+		$this->servicio=new ServiciosModel();
+
 	}
 
 	public function index()
@@ -24,11 +29,15 @@ class Nichos extends BaseController
 		$nichosA=$this->nichos->where('tipo','a') ->orderBy('nivel', 'desc')->findall();
 		$titulo="Nichos";
 
+		$servicio=$this->servicio->where('id','1')->first();
+
+
 		$data=
 		[
 			"nichosv"=>$nichosV,
 			"nichosp"=>$nichosP,
-			"nichosa"=>$nichosA
+			"nichosa"=>$nichosA,
+			"servicio"=>$servicio
 	
 		];
 		$dataheader=["titulo"=>$titulo];
