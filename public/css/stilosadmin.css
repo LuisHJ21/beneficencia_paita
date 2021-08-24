@@ -1,0 +1,39 @@
+.alert-danger {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+}
+
+.alert-success {
+    color: #155724 !important;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+}
+
+
+
+.nav-treeview > .nav-item:hover{
+    background-color: rgba(255,255,255,.9);
+  
+}
+
+
+.nav-treeview > .nav-item:hover > a{
+color:#343a40 !important;
+}
+
+.navbar-up
+{
+    background-color: #2274A5 !important;
+}
+
+.navbar-up a
+{
+    color:#e3e3e3 !important;
+}
+
+.content-wrapper
+{
+    background-color: #e3e3e3 !important;
+}
+
