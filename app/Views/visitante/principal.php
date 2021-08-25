@@ -2,40 +2,57 @@
 
       <!-- seccion de slide -->
       <section>
-        <div class="swiper-container swiper-slider swiper-variant-1 bg-black" data-loop="false" data-autoplay="5500" data-simulate-touch="true">
-          <div class="swiper-wrapper text-center">
 
-          <?php foreach($slides as $slide): ?>
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <?php if(count($slides)==0){ ?>
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
 
-            <div class="swiper-slide" data-slide-bg="<?php echo $slide['imagen'] ?>">
-              <div class="swiper-slide-caption text-center">
-                <div class="container">
-                  <div class="row justify-content-md-center">
-                    <div class="col-md-11 col-lg-10 col-xl-9">
-                      <!-- <div class="header-decorated" data-caption-animate="fadeInUp" data-caption-delay="0s">
-                        <h3 class="medium text-primary">With Us</h3>
-                      </div> -->
-                      <!-- <h2 class="slider-header" data-caption-animate="fadeInUp" data-caption-delay="150">You Are Always One Step Ahead</h2>
-                      <p class="text-bigger slider-text" data-caption-animate="fadeInUp" data-caption-delay="250">Strategies of our attorneys will help you solve very complex legal issues.</p>
-                      <div class="button-block" data-caption-animate="fadeInUp" data-caption-delay="400"><a class="button button-lg button-primary-outline-v2" href="#">Request a Free Consultation</a></div>
-                     -->
-                    </div>
-                  </div>
-                </div>
+            <?php } ?>
+          <?php $cont=0; foreach($slides as $slide): ?>
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="<?php if($cont==0){echo 'active'; }?>"></li>
+            <?php $cont+=1; endforeach; ?>
+          </ol>
+          <div class="carousel-inner">
+
+          <?php if(count($slides)==0){ ?>
+
+            <div class="carousel-item active">
+              <img src="<?php echo base_url() ?>/images/bg-image-1.jpg" class="d-block w-100 img-fluid" alt="..." style="height: 500px;">
+              <div class="carousel-caption d-none d-md-block" style="background-color:rgba(0,0,0,.25)">
+                <h5 class="text-white">Titulo</h5>
+                <p>Descripcion</p>
               </div>
             </div>
 
-            <?php endforeach; ?>
 
+            <?php } ?>
+
+            <?php $cont=0; foreach($slides as $slide): ?>
+            <div class="carousel-item <?php if($cont==0){echo 'active'; }?>">
+              <img src="<?php echo $slide['imagen'] ?>" class="d-block w-100 img-fluid" alt="..." style="height: 500px;">
+              <div class="carousel-caption <?php if(!$slide['titulo'] && !$slide['contenido']){echo 'd-none';} else{echo 'd-block';} ?>" style="background-color:rgba(0,0,0,.25)">
+                <h5 class="text-white"><?php echo $slide['titulo'] ?></h5>
+                <p><?php echo $slide['contenido'] ?></p>
+              </div>
+            </div>
             
-          
+            <?php $cont+=1; endforeach; ?>
+
+
           </div>
-          <div class="swiper-scrollbar d-lg-none"></div>
-          <div class="swiper-nav-wrap">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
+        
+
+
       </section>
 
     
@@ -46,6 +63,16 @@
         <div class="container">
           <h3 class="text-center titulo-principal">Ultimas Noticias</h3>
           <div class="row row-40 row-offset-1 justify-content-sm-end">
+
+            <?php if(count($noticias)==0){ ?>
+
+            <div class="col-12">
+                <h4 class="text-center text-secondary">No Hay Noticias Registradas</h4>
+            </div>
+
+
+            <?php  } ?>
+
 
           <?php $i=0; foreach($noticias as $noti):?>
             <div class="col-sm-6 col-md-3  ">
@@ -104,11 +131,12 @@
        
           <div class="row row-40 align-items-sm-center">
 
+          
           <?php $i=0; foreach($directorio as $dir): ?>
             <div class="col-sm-6 col-md-4 col-lg-3">
               <div class="thumbnail-variant-2-wrap">
                 <div class="thumbnail thumbnail-variant-2">
-                  <figure class="thumbnail-image"><img src="<?php echo $dir['imagen'] ?>" alt="" style="width: 100%;!important" width="246" height="300"/>
+                <figure class="thumbnail-image"><img src="<?php if(!$dir['imagen']){echo base_url('/images/no-imagen-directorio.jpg');}else{echo $dir['imagen'];}  ?>" alt="" style="width: 100%;!important" width="246" height="300"/>
                   </figure>
                   <!-- <div class="thumbnail-inner">
                     

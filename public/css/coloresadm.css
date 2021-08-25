@@ -26,6 +26,12 @@ footer
 }
 
 
+.texto-secundario
+{
+    color:#2274A5 !important
+}
+
+
 .card-primary.card-outline {
     border-top: 3px solid #2274A5 !important;
 }

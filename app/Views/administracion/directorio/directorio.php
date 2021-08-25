@@ -56,7 +56,7 @@
                       echo "onclick='mdlModificarImagen(\"".$dir['id_directorio']."\",\"".$dir['nombres'].' '.$dir['apellidos']."\")'"
                     ?>
                     ><img style="width:100px"
-                     src="<?php echo $dir['imagen'] ?>" alt=""></td>
+                     src="<?php if(!$dir['imagen']){echo base_url('/images/no-imagen-directorio.jpg');}else{echo $dir['imagen'];} ?>" alt=""></td>
                     <td><?php echo $dir['nombres'].' '.$dir['apellidos'] ?></td>
                     <td><?php echo $dir['cargo'] ?></td>
                     <td tyle="cursor: pointer;"

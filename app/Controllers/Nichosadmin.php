@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 use App\Models\NichosModel;
 
 use App\Models\ServiciosModel;
+use App\Models\MensajesModel;
+
 
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -19,12 +21,15 @@ class Nichosadmin extends BaseController
 	protected $nichos;
 	protected $cloudinary;
 	protected $servicio;
+	protected $mensajes;
 
 
 
 
 	public function __construct()
 	{
+
+		$this->mensajes=new MensajesModel();
 
 		$this->nichos=new NichosModel();
 		$this->servicio=new ServiciosModel();
@@ -42,11 +47,13 @@ class Nichosadmin extends BaseController
 	public function index()
 	{
 
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$nichosV=$this->nichos->where('tipo','v') ->orderBy('nivel', 'desc')->findall();
 		$nichosP=$this->nichos->where('tipo','p') ->orderBy('nivel', 'desc')->findall();
 		$nichosA=$this->nichos->where('tipo','a') ->orderBy('nivel', 'desc')->findall();
 		
-		$titulo=['titulo'=>"Nichos"];
+		$titulo=['titulo'=>"Nichos","noread"=>$noread];
 		$servicio=$this->servicio->where('id','1')->first();
 
 

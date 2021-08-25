@@ -87,13 +87,8 @@
                 <?php } ?>
 
 
-
-                <?php if($nosotros['imagen_historia']==null){ ?>
-                    <img style="width:100%;height:200px;" src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="">
-                <?php } else {?>
-
-                    <img style="width:100%;height:200px;" src="<?php echo $nosotros['imagen_historia'] ?>" alt="">   
-                <?php }?>
+                    <img style="width:100%;height:200px;" src="<?php if(!$nosotros['imagen_historia']){echo base_url('/images/no-imagen.jpg');}else{echo  $nosotros['imagen_historia'];} ?>" alt="">   
+               
                 </div>
 
                 <div class="card-footer">

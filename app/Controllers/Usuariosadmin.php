@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\UsuariosModel;
+use App\Models\MensajesModel;
 
 
 class Usuariosadmin extends BaseController
@@ -11,15 +12,21 @@ class Usuariosadmin extends BaseController
 
 	protected $usuarios;
 	protected $db;
+	protected $mensajes;
+
 
 	public function __construct()
 	{
 		$this->usuarios=new UsuariosModel();
 		$this->db = \Config\Database::connect();
+		$this->mensajes=new MensajesModel();
+
 
 	}
 	public function index()
 	{
+
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
 
 		$usuarios=$this->usuarios->where('estado','Activo')->findall();
 
@@ -28,7 +35,7 @@ class Usuariosadmin extends BaseController
 		];
 
 
-		$titulo=['titulo'=>"Usuarios"];
+		$titulo=['titulo'=>"Usuarios","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/usuarios/usuarios',$data);
 		echo view('administracion/footer');
@@ -36,7 +43,9 @@ class Usuariosadmin extends BaseController
 
 	public function agregar()
 	{
-		$titulo=['titulo'=>"Agregar Usuario"];
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
+		$titulo=['titulo'=>"Agregar Usuario","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/usuarios/nuevousuario');
 		echo view('administracion/footer');
@@ -44,12 +53,14 @@ class Usuariosadmin extends BaseController
 
 	public function eliminados()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$usuarios=$this->usuarios->where('estado','Inactivo')->findall();
 
 		$data=[
 			"usuarios"=>$usuarios
 		];
-		$titulo=['titulo'=>"Usuarios Eliminados"];
+		$titulo=['titulo'=>"Usuarios Eliminados","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/usuarios/eliminados',$data);
 		echo view('administracion/footer');

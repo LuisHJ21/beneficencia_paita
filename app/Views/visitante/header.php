@@ -61,7 +61,7 @@
                     <div class="rd-navbar-aside-group" >
                       <ul class="list-inline list-inline-reset">
                         <li><a class="novi-icon icon icon-circle icon-nobel-filled icon-xxs-smaller fab fa-facebook-f" target="_blank" href="https://web.facebook.com/beneficencia.depaita"></a></li>
-                        <li><a class="novi-icon icon icon-circle icon-nobel-filled icon-xxs-smaller fab fa-whatsapp" href="#"></a></li>
+                        <li><a class="novi-icon icon icon-circle icon-nobel-filled icon-xxs-smaller fab fa-whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=51960293503"></a></li>
                       </ul>
                     </div>
                   </div>
@@ -83,7 +83,7 @@
                           <li class="<?php if($titulo=="Directorio"){echo "submenuactivo";} ?>"><a style="" href="<?php echo base_url() ?>/directorio">Miembros del Directorio</a></li>
                         </ul>
                       </li> 
-                      <li class="pre-nav"><a class="multi" href="#">Servicios <span  class=" flechita-nosotros fas fa-chevron-down"></span></a>
+                      <li class="pre-nav <?php if($titulo=="SERFIN"||$titulo=="Nichos"){echo "active";} ?>"><a class="multi" href="#">Servicios <span  class=" flechita-nosotros fas fa-chevron-down"></span></a>
                         <ul class="nav-detalle" style="">
                           <li class="<?php if($titulo=="Nichos"){echo "submenuactivo";} ?>"><a style="" href="<?php echo base_url()?>/nichos">Nichos</a></li>
                           <li class="<?php if($titulo=="SERFIN"){echo "submenuactivo";} ?>"><a style="" href="<?php echo base_url()?>/serfin">SERFIN</a></li>

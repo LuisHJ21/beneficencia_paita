@@ -11,6 +11,15 @@
         <div class="container">
           <div class="row row-40 row-offset-1 justify-content-sm-center justify-content-md-start">
 
+          <?php if(count($noticias)==0){ ?>
+
+          <div class="col-12">
+              <h4 class="text-center text-secondary">No Hay Noticias Registradas</h4>
+          </div>
+          
+
+          <?php  } ?>
+
           <?php $i=0;   foreach($noticias as $noti):?>
             <div class="col-sm-9 col-md-6 col-lg-4 ">
               <article class="post-boxed" style="background-color:<?php if($i%2==0){echo '#D64045';}else{echo '#2274A5';} ?>">

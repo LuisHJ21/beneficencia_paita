@@ -19,7 +19,7 @@
                 <h4>Siguenos en Nuestras Redes</h4>
                 <ul class="list-inline list-inline-reset">
                     <li><a class="novi-icon icon icon-circle icon-bright-gray-filled icon-lg-smaller fab fa-facebook-f" target="_blank" href="https://web.facebook.com/beneficencia.depaita"></a></li>
-                    <li><a class="novi-icon icon icon-circle icon-bright-gray-filled icon-lg-smaller fab fa-whatsapp" href="#"></a></li>
+                    <li><a class="novi-icon icon icon-circle icon-bright-gray-filled icon-lg-smaller fab fa-whatsapp" target="_blank" href="https://api.whatsapp.com/send?phone=51960293503"></a></li>
                   </ul>
               </div>
             </div>

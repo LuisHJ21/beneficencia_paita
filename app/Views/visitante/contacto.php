@@ -1,3 +1,4 @@
+<?php $session=session(); ?>
 <section class="section-30 section-md-40 section-lg-66 section-xl-bottom-90 bg-gray-dark page-title-wrap" style="background-image: url(images/bg-image-1.jpg);">
         <div class="container">
           <div class="page-title">
@@ -36,29 +37,47 @@
                <div class="col-12 col-md-6">
                 <div class="formulario px-4 py-5">
                     <h4 class="text-center">Envianos un Mensaje</h4>
-                    <form action="" name="form-mensaje" id="form-mensaje">
+                    <form action="<?php echo base_url() ?>/contacto/enviarmensaje" name="form-mensaje" id="form-mensaje" method="post" autocomplete="off">
                        <div class="form-group">
                            <label for="nombre">Nombre:(*)</label>
-                           <input type="text" class="form-control form-control-lg" required>
+                           <input type="text" name="nombre" id="nombre" class="form-control form-control-lg" required>
                        </div>
 
                        <div class="form-group">
                            <label for="correo">Correo:(*)</label>
-                           <input type="email" class="form-control form-control-lg" required>
+                           <input type="email" name="email" id="email" class="form-control form-control-lg" required>
                        </div>
 
                        <div class="form-group">
                            <label for="asunto">Asunto:</label>
-                           <input type="text" class="form-control form-control-lg" required>
+                           <input type="text" name="asunto" id="asunto" class="form-control form-control-lg" required>
                        </div>
 
                        <div class="form-group">
                            <label for="mensaje">Mensaje:(*)</label>
-                           <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                           <textarea style="font-size:14px;" class="form-control" name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
                        </div>
                        <span>(*) Campos Obligatorios</span>
                     </form>
-                    <button type="submit" form="form-mensaje" class="btn btn-block btn-primary mt-3"><i class="fas fa-envelope pr-3"></i> Enviar Mensaje</button>
+                    <button type="submit" form="form-mensaje" class="btn btn-block btn-primary my-3"><i class="fas fa-envelope pr-3"></i> Enviar Mensaje</button>
+
+                    <?php if($session->success) { ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     <i class="fas fa-check mr-1"></i> <?php echo $session->success; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php } ?>
+
+                    <?php if($session->error) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     <i class="fas fa-times mr-1"></i> <?php echo $session->error; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php } ?>
                 </div>
                    
                </div>

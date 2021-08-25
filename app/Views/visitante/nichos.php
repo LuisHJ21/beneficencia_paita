@@ -35,11 +35,8 @@
             </div>
             <div class="col-12 col-md-6 pb-5">
 
-            <?php if(!$servicio['imagen']){ ?>
-            <img src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="" class="img-fluid h-100">
-            <?php } ?>
 
-            <img src="<?php echo $servicio['imagen'] ?>" alt="" class="img-fluid h-100">               
+            <img src="<?php if(!$servicio['imagen']){echo base_url('/images/no-imagen.jpg');}else{echo $servicio['imagen'];}  ?>" alt="" class="img-fluid h-100">               
             </div>
             <div class="col-12 col-md-6 pb-5">
                 <h4 class="color-principal text-center">Nichos Parvulos</h4>

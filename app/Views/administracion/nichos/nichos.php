@@ -101,11 +101,9 @@
                    <h4 class="text-center">Imagen</h4>
                </div>
                <div class="card-body">
-               <?php if(!$servicio['imagen']){ ?>
-                        <img src="https://plantillasdememes.com/img/plantillas/imagen-no-disponible01601774755.jpg" alt="" class="img-fluid">
-                        <?php } ?>
+               
 
-                        <img src="<?php echo $servicio['imagen'] ?>" alt="" class="img-fluid">
+                        <img src="<?php if(!$servicio['imagen']){echo base_url('/images/no-imagen.jpg'); } else{ echo $servicio['imagen']; }?>" alt="" class="img-fluid">
                         
                         <hr>
                         <?php if($session->successimg ){  ?>

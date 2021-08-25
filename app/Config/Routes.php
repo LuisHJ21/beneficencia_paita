@@ -41,7 +41,10 @@ $routes->get('/noticias', 'Noticias::index');
 $routes->get('/noticias/detallenoticia/(:num)', 'Detallenoticia::index/$1');
 
 $routes->get('/eventos', 'Eventos::index');
+
 $routes->get('/contacto', 'Contacto::index');
+$routes->get('/contacto/enviarmensaje', 'Contacto::enviarmensaje');
+
 $routes->get('/nichos', 'Nichos::index');
 $routes->get('/serfin', 'Serfin::index');
 
@@ -97,10 +100,12 @@ $routes->group('admin',function($routes)
 	$routes->add('slides','Slidesadmin::index');
 	$routes->add('slides/agregar','Slidesadmin::subirimagen');
 	$routes->add('slides/eliminar','Slidesadmin::eliminarimagen');
+	$routes->add('slides/actualizarcontenido','Slidesadmin::actualizarcontenido');
 
 	$routes->add('contacto','Contactoadmin::index');
 
 	$routes->add('mensajes','Mensajesadmin::index');
+	$routes->add('mensajes/detalle/(:num)','Mensajesadmin::detalle/$1');
 
 	$routes->add('serfin','Serfinadmin::index');
 	$routes->add('serfin/guardarservicio','Serfinadmin::guardarservicio');

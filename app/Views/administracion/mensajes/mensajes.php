@@ -1,3 +1,5 @@
+
+ 
 <div class="row mb-2">
           <div class="col-sm-6 pt-4 pb-4">
             <h1>Mensajes</h1>
@@ -16,7 +18,7 @@
     <div class="col-md-12 ">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Inbox</h3>
+              <h3 class="card-title">Mensajes</h3>
 
               <div class="card-tools">
                 
@@ -25,47 +27,43 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                
-                
               
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-right"></i>
-                    </button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.float-right -->
-              </div>
-              <div class="table-responsive mailbox-messages">
-                <table class="table  ">
-                  
+              <div class="table-responsive  mailbox-messages">
+                <table class="table" id="example1">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Enviado Por</th>
+                      <th>Asunto</th>
+                      <th>Fecha</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                  <tr >
-                   
-                    <td class="mailbox-star"><i class="fas fa-circle text-primary"></i></td>
-                    <td class="mailbox-name texto-primario">Alexander Pierce</td>
-                    <td class="mailbox-subject font-weight-bold" style="max-width:900px">Trying to find a solution to this problem...
-                    </td>
-                   
-                    <td class="mailbox-date">5 mins ago</td>
-                  </tr>
+
+                  <?php if(count($mensajes)==0) { ?>
+
                   <tr>
-                    
-                    <td class="mailbox-star"><i class="fas fa-circle-o text-primary"></i></td>
-                    <td class="mailbox-name texto-primario">Alexander Pierce</td>
-                    <td class="mailbox-subject "style="max-width:900px">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore quaerat, praesentium non commodi aliquid ipsam nam molestiae quo quisquam adipisci officiis libero aperiam id repellendus explicabo blanditiis quas cupiditate veniam.
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, illum, placeat dolorum eos sequi suscipit facilis cumque sit accusamus fugit voluptatum incidunt ratione nostrum ipsum dicta beatae dolore repellat error?
-                    </td>
-                    <td class="mailbox-date">28 mins ago</td>
+                    <td colspan="4" class="text-center">No hay Mensajes</td>
                   </tr>
+
+                  <?php } ?>
+
+                  <?php foreach($mensajes as $men): ?>
+                  <tr style="cursor:pointer;" class='clickable-row <?php if($men['estado']=="no leido"){ echo 'font-weight-bold';} ?>' data-href='<?php echo base_url() ?>/admin/mensajes/detalle/<?php echo $men['id']?>'>
+                   
+                    <td class="mailbox-star">
+                      <?php if($men['estado']=="no leido") { ?>
+                      <i  class="fas fa-circle texto-secundario"></i>
+                      <?php } ?>
+                    </td>
+                    <td class="mailbox-name texto-secundario  text-uppercase"><?php echo $men['nombre_envia'] ?></td>
+                    <td class="mailbox-subject "><?php echo $men['asunto'] ?></td>
+                   
+                    <td class="mailbox-date  text-uppercase"><?php setlocale(LC_TIME, 'spanish'); $date = new DateTime($men['creado']); $fecha = strftime("%d %b", $date->getTimestamp()); echo $fecha; ?></td>
+
+                  </tr>
+                  
+                  <?php endforeach; ?>
                   
                   
                   </tbody>
@@ -75,28 +73,18 @@
               <!-- /.mail-box-messages -->
             </div>
             <!-- /.card-body -->
-            <div class="card-footer p-0">
-              <div class="mailbox-controls">
-                <!-- Check all button -->
-                
-                <!-- /.btn-group -->
-                
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-right"></i>
-                    </button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.float-right -->
-              </div>
-            </div>
+           
           </div>
           <!-- /.card -->
         </div>
     </div>
+
+
+    <script>
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+    </script>

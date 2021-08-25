@@ -10,11 +10,25 @@
         <div class="container">
        
           <div class="row row-40 align-items-sm-end">
+
+          <?php if(count($directorio)==0){ ?>
+
+            <div class="col-12">
+                <h4 class="text-center text-secondary">No Hay Miembros Registrados</h4>
+            </div>
+
+
+            <?php  } ?>
+
+
             <?php foreach($directorio as $dir): ?>
             <div class="col-sm-6 col-md-4 col-lg-3">
               <div class="thumbnail-variant-2-wrap">
                 <div class="thumbnail thumbnail-variant-2">
-                  <figure class="thumbnail-image"><img src="<?php echo $dir['imagen'] ?>" alt="" style="width: 100%;!important" width="246" height="300"/>
+
+                  
+
+                  <figure class="thumbnail-image"><img src="<?php if(!$dir['imagen']){echo base_url('/images/no-imagen-directorio.jpg');}else{echo $dir['imagen'];}  ?>" alt="" style="width: 100%;!important" width="246" height="300"/>
                   </figure>
                   <!-- <div class="thumbnail-inner">
                     

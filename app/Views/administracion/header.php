@@ -3,6 +3,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <?php 
+    
+  ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $titulo; ?></title>
 
@@ -305,7 +308,7 @@
                 <a href="<?php echo base_url() ?>/admin/mensajes" class="nav-link <?php if($titulo=="Mensajes" ) {echo "active"; }?>">
                 <i class="nav-icon fas fa-envelope"></i>
                   <p>Mensajes</p>
-                  <span class="right badge badge-danger">New</span>
+                  <span class="right badge badge-danger"><?php if($noread){ echo count($noread); }?></span>
                   
                 </a>
               </li>

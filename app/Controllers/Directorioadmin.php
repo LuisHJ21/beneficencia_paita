@@ -4,6 +4,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 
 use App\Models\DirectorioModel;
+use App\Models\MensajesModel;
+
 
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -17,6 +19,7 @@ class Directorioadmin extends BaseController
 
 	protected $cloudinary;
 	protected $directorio;
+	protected $mensajes;
 
 
 	public function __construct()
@@ -30,18 +33,22 @@ class Directorioadmin extends BaseController
 			  'api_secret' => 'uG1jBE2toxvmYZEgx1x6j2HeOfU',
 			'url' => [
 			  'secure' => true]]]);
+			  $this->mensajes=new MensajesModel();
+
 
 
 	}
 	public function index()
 	{
 		$directorio=$this->directorio->where('estado','Activo')->findall();
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 
 		$data=
 		[
 			"directorio"=>$directorio
 		];
-		$titulo=['titulo'=>"Directorio"];
+		$titulo=['titulo'=>"Directorio","noread"=>$noread];
 
 		echo view('administracion/header',$titulo);
 		echo view('administracion/directorio/directorio',$data);
@@ -51,12 +58,13 @@ class Directorioadmin extends BaseController
 	public function eliminados()
 	{
 		$directorio=$this->directorio->where('estado','Inactivo')->findall();
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
 
 		$data=
 		[
 			"directorio"=>$directorio
 		];
-		$titulo=['titulo'=>"Miembros Eliminados"];
+		$titulo=['titulo'=>"Miembros Eliminados","noread"=>$noread];
 
 		echo view('administracion/header',$titulo);
 		echo view('administracion/directorio/eliminados',$data);
@@ -65,7 +73,9 @@ class Directorioadmin extends BaseController
 
 	public function agregar()
 	{
-		$titulo=['titulo'=>"Añadir Miembro"];
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
+		$titulo=['titulo'=>"Añadir Miembro","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/directorio/nuevodirectorio');
 		echo view('administracion/footer');

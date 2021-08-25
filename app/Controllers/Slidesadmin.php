@@ -4,6 +4,8 @@ namespace App\Controllers;
 use CodeIgniter\Controllers;
 
 use App\Models\SlidesModel;
+use App\Models\MensajesModel;
+
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Cloudinary\ClassUtils;
@@ -16,6 +18,8 @@ class Slidesadmin extends BaseController
 
 	protected $slides;
 	protected $cloudinary;
+	protected $mensajes;
+
 
 	public function __construct()
 	{
@@ -28,15 +32,19 @@ class Slidesadmin extends BaseController
 			'url' => [
 			  'secure' => true]]]);
 
+		$this->mensajes=new MensajesModel();
+
 	}
 
 	public function index()
 	{
 		$slides=$this->slides->findall();
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 
 		$data=["slides"=>$slides];
 
-		$titulo=['titulo'=>"Slides"];
+		$titulo=['titulo'=>"Slides","noread"=>$noread];
         echo view('administracion/header',$titulo);
         echo view('administracion/slides',$data);
 		echo view('administracion/footer');
@@ -72,7 +80,9 @@ class Slidesadmin extends BaseController
 			$slides=$this->slides->save(
 				[
 					"imagen"=>$this->cloudinary->image('beneficencia/slides/'.$path2),
-					"public_id"=>'beneficencia/slides/'.$path
+					"public_id"=>'beneficencia/slides/'.$path,
+					"titulo"=> $this->request->getPost('titulo'),
+					"contenido"=>$this->request->getPost('contenido')
 				]
 				); 
 
@@ -80,6 +90,32 @@ class Slidesadmin extends BaseController
 			return redirect()->to(base_url('admin/slides'))->with('success','Nueva Imagen Agregada Correctamente.');
 		} catch (Exception $e) {
 			return redirect()->to(base_url('admin/slides'))->with('error','Ha ocurrido un error al agregar la Imagen.');
+		}
+
+	}
+
+
+	public function actualizarcontenido()
+	{
+
+
+		try {
+			
+			$slides=$this->slides->update(
+				$this->request->getPost('idedit'),
+				[
+					
+					"titulo"=> $this->request->getPost('tituloedit'),
+					"contenido"=>$this->request->getPost('contenidoedit')
+				]
+				); 
+
+				return redirect()->to(base_url('admin/slides'))->with('successactualizar','Contenido Actualizado Correctamente.');
+
+		
+		} catch (Exception $e) {
+			return redirect()->to(base_url('admin/slides'))->with('erroractualizar','Error en la Actualizacion.');
+
 		}
 
 	}

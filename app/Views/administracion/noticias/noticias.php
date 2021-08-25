@@ -54,7 +54,7 @@
                     <?php foreach($noticias as $noti): ?>
                   <tr>
                     <td><img style="width:100px"
-                     src="<?php echo $noti['imagen'] ?>" alt=""></td>
+                     src="<?php if(!$noti['imagen']){echo base_url('/images/no-imagen.jpg');}else{echo $noti['imagen'];}  ?>" alt=""></td>
                     <td><?php echo $noti['titulo'] ?></td>
                     <td><?php
                       $fecha=$noti['creado'];

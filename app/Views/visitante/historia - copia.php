@@ -1,11 +1,10 @@
-<div class="div-historia bg-gray-dark " >
-  <img src="<?php echo base_url() ?>/images/apoyo1.png" alt="" class="h-100 w-100">
-        <div class="container container-historia" style="position:absolute">
+<section class="section-30 section-md-40 section-lg-66 section-xl-bottom-90 bg-gray-dark page-title-wrap" style="background-image: url(<?php echo base_url() ?>/images/apoyo1.png);">
+        <div class="container">
           <div class="page-title">
             <h2>Historia</h2>
           </div>
         </div>
-</div>
+</section>
 
       <section class="section-66 section-md-90 section-xl-bottom-120">
         <div class="container">

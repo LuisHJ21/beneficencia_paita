@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 
 use App\Models\NoticiasModel;
 use App\Models\ImagenesnoticiasModel;
+use App\Models\MensajesModel;
+
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Cloudinary\ClassUtils;
@@ -17,9 +19,13 @@ class Noticiasadmin extends BaseController
 	protected $noticias;
 	protected $cloudinary;
 	protected $imgnoticia;
+	protected $mensajes;
+
 
 	public function __construct()
 	{
+		$this->mensajes=new MensajesModel();
+
 		$this->noticias=new NoticiasModel();
 		$this->imgnoticia=new Imagenesnoticiasmodel();
 		$this->cloudinary=new Cloudinary([
@@ -33,10 +39,12 @@ class Noticiasadmin extends BaseController
 
 	public function index()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$noticias=$this->noticias->where('estado','Activo')->findall();
 		$data=["noticias"=>$noticias];
 
-		$titulo=['titulo'=>"Noticias"];
+		$titulo=['titulo'=>"Noticias","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/noticias/noticias',$data);
 		echo view('administracion/footer');
@@ -44,10 +52,12 @@ class Noticiasadmin extends BaseController
 
 	public function eliminadas()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$noticias=$this->noticias->where('estado','Inactivo')->findall();
 		$data=["noticias"=>$noticias];
 
-		$titulo=['titulo'=>"Noticias Eliminadas"];
+		$titulo=['titulo'=>"Noticias Eliminadas","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/noticias/eliminadas',$data);
 		echo view('administracion/footer');
@@ -104,7 +114,9 @@ class Noticiasadmin extends BaseController
 
 	public function agregar()
 	{
-		$titulo=['titulo'=>"Agregar Noticia"];
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
+		$titulo=['titulo'=>"Agregar Noticia","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/noticias/nuevanoticia');
 		echo view('administracion/footer');

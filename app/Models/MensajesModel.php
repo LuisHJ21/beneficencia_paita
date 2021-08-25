@@ -4,22 +4,22 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SlidesModel extends Model
+class MensajesModel extends Model
 {
-    protected $table      = 'slides';
-    protected $primaryKey = 'id_slide';
+    protected $table      = 'mensajes';
+    protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['imagen','public_id','titulo','contenido'];
+    protected $allowedFields = ['asunto','mensaje','nombre_envia','correo_envia','estado'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'creado';
     protected $updatedField  = 'actualizado';
-    protected $deletedField  = 'eliminado';
+  
 
     protected $validationRules    = [];
     protected $validationMessages = [];

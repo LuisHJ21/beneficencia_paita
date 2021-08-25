@@ -37,3 +37,13 @@ color:#343a40 !important;
     background-color: #e3e3e3 !important;
 }
 
+.dataTables_wrapper > .row:first-of-type
+{
+    padding:1rem 2rem 0.8rem 2rem;
+}
+
+.dataTables_wrapper > .row:nth-of-type(3)
+{
+    padding:0.8rem 2rem 0.8rem 2rem;
+    border-top:1px solid rgba(0,0,0,.125);
+}

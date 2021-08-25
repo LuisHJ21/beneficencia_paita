@@ -5,6 +5,7 @@ use CodeIgniter\Controllers;
 
 
 use App\Models\SerfinModel;
+use App\Models\MensajesModel;
 
 use App\Models\ServiciosModel;
 
@@ -24,6 +25,7 @@ class Serfinadmin extends BaseController
 	protected $serfin;
 
 	protected $servicio;
+	protected $mensajes;
 
 
 
@@ -34,6 +36,7 @@ class Serfinadmin extends BaseController
 		$this->serfin=new SerfinModel();
 
 		$this->servicio=new ServiciosModel();
+		$this->mensajes=new MensajesModel();
 
 		$this->cloudinary=new Cloudinary([
 			'cloud' => [
@@ -51,12 +54,14 @@ class Serfinadmin extends BaseController
 		$serfin=$this->serfin->first();
 
 		$servicio=$this->servicio->where('id','2')->first();
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 
 		$data=["serfin"=>$serfin,"servicio"=>$servicio];
 		
 		
 		$titulo="SERFIN";
-		$dataheader=["titulo"=>$titulo];
+		$dataheader=["titulo"=>$titulo,"noread"=>$noread];
 		echo view('administracion/header',$dataheader);
 		echo view('administracion/serfin',$data);
 		echo view('administracion/footer');

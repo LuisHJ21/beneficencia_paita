@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use CodeIgniter\Controllers;
+use App\Models\MensajesModel;
 
 use App\Models\NosotrosModel;
 
@@ -13,6 +14,9 @@ use Cloudinary\Api\Upload\UploadApi;
 
 class Nosotrosadmin extends BaseController
 {
+
+	protected $mensajes;
+
 
 	protected $nosotros;
 	protected $cloudinary;
@@ -27,13 +31,18 @@ class Nosotrosadmin extends BaseController
 			  'api_secret' => 'uG1jBE2toxvmYZEgx1x6j2HeOfU',
 			'url' => [
 			  'secure' => true]]]);
+
+			  $this->mensajes=new MensajesModel();
+
 	}
 
 	public function historia()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$nosotros=$this->nosotros->first();
 		$data=["nosotros"=>$nosotros];
-		$titulo=['titulo'=>"Historia"];
+		$titulo=['titulo'=>"Historia","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/nosotros/historia',$data);
 		echo view('administracion/footer');
@@ -41,9 +50,11 @@ class Nosotrosadmin extends BaseController
 
 	public function mision()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$nosotros=$this->nosotros->first();
 		$data=["nosotros"=>$nosotros];
-		$titulo=['titulo'=>"Mision"];
+		$titulo=['titulo'=>"Mision","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/nosotros/mision',$data);
 		echo view('administracion/footer');
@@ -51,9 +62,11 @@ class Nosotrosadmin extends BaseController
 
 	public function vision()
 	{
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
+
 		$nosotros=$this->nosotros->first();
 		$data=["nosotros"=>$nosotros];
-		$titulo=['titulo'=>"Vision"];
+		$titulo=['titulo'=>"Vision","noread"=>$noread];
 		echo view('administracion/header',$titulo);
 		echo view('administracion/nosotros/vision',$data);
 		echo view('administracion/footer');

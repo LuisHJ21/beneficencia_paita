@@ -42,14 +42,14 @@
 
      
       <!-- seccion de noticias -->
-      <section class="section-50 section-md-75 section-xl-100 noticias-section">
+      <section class="section-50 noticias-section">
         <div class="container">
           <h3 class="text-center titulo-principal">Ultimas Noticias</h3>
           <div class="row row-40 row-offset-1 justify-content-sm-end">
 
           <?php $i=0; foreach($noticias as $noti):?>
             <div class="col-sm-6 col-md-3  ">
-              <article class="post-boxed" style="background-color:<?php if($i%2==0){echo '#D64045';}else{echo '#5DA271';} ?>">
+              <article class="post-boxed" style="background-color:<?php if($i%2==0){echo '#D64045';}else{echo '#2274A5';} ?>">
                 <div class="post-boxed-image"><img style="height:150px" src="<?php echo $noti['imagen'] ?>" alt="" width="268" />
                 </div>
                 <div class="post-boxed-body">
@@ -81,59 +81,28 @@
             <?php if(++$i==12) break; ?>
             <?php endforeach; ?>
 
-          </div>
-        </div>
-      </section>
-
-
-
-       <!-- seccion de eventos -->
-       <section class="section-50 section-md-75 section-xl-100">
-        <div class="container">
-          <h3  class="text-center titulo-principal">Proximos eventos</h3>
-          <div class="row row-40 row-offset-1 justify-content-sm-center">
-          <?php $i=0; foreach($eventos as $eve): ?>
-             
-              <?php $fecha=$eve['fecha']; ?>
-              <?php $hora=$eve['hora']; ?>
-            <div class="col-sm-9 col-md-6 col-lg-4 col-xl-4">
-              <div class="event-item" <?php echo "onclick='mdldetalles(\"".$con=date('d-m-Y',strtotime($fecha))."\",\"".$con=date('h:i A',strtotime($hora))."\",\"".$eve['lugar']."\")'" ;?> style="cursor: pointer">
-                <div class="event-image">
-                  <img style="height:196px" src="<?php echo $eve['imagen'] ?>" alt="">
-                </div>
-                <div class="event-info" >
-                  <div class="date">
-                    <span>
-                      <span class="day"><?php $con=date('d',strtotime($fecha)); echo $con; ?></span>
-                      <span class="month"><?php $con=date('M',strtotime($fecha)); echo $con; ?></span>
-                    </span>
-                  </div>
-                  <div class="event-content ">
-                    <h6><a href="#"><?php echo $eve['nombre'] ?></a></h6>
-                    <ul class="event-meta">
-                      <li><i class="icons icon-clock"></i> <?php $con=date('h:i A',strtotime($hora)); echo $con ; ?></li>
-                      <li><i class="icons icon-location"></i> <?php echo $eve['lugar'] ?></li>
-                    </ul>
-                  </div>
-                </div>
+            <div class="col-sm-12 row justify-content-center">
+              <div class="col-sm-12 col-md-3">
+                <a href="" class="btn btn-secondary btn-block">Ver más Noticias</a>
               </div>
             </div>
-            <?php if(++$i==3) break; ?>
-            <?php endforeach; ?>
-           
-          
           </div>
         </div>
       </section>
+
+
+
+      <!-- seccion de eventos -->
+      
 
 
 
       <!-- seccion delPersonal -->
 
-      <section class="section-60 section-lg-100">
+      <section class="section-60 ">
         <div class="container">
        
-          <div class="row row-40 align-items-sm-end">
+          <div class="row row-40 align-items-sm-center">
 
           <?php $i=0; foreach($directorio as $dir): ?>
             <div class="col-sm-6 col-md-4 col-lg-3">
@@ -160,13 +129,50 @@
                 <div class="block-number"><i class="fas fa-user-tie"></i></div>
                 <h3 class="text-normal titulo-principal">Miembros</h3>
                 <p class="h5 h5-smaller text-style-4 titulo-principal">del directorio</p>
-                <p>Vestibulum pretium porta neque at faucibus. Suspendisse blandit tincidunt tortor. </p><a class="link link-group link-group-animated link-bold link-secondary" href="<?php echo base_url() ?>/directorio"><span>Ver más.</span><span class="novi-icon icon icon-xxs icon-primary fa fa-angle-right"></span></a>
+               <a class="link link-group link-group-animated link-bold link-secondary" href="<?php echo base_url() ?>/directorio"><span>Ver más.</span><span class="novi-icon icon icon-xxs icon-primary fa fa-angle-right"></span></a>
               </div>
             </div>
 
           </div>
         </div>
       </section>
+
+
+<div id="detallesevento" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Datos del Evento</h5>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Lugar</th>
+            </tr>
+          </thead>
+          <tbody id="datosevento">
+           
+           
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <div class="container-fluid">
+          <div class="row justify-content-end">
+            <div class="col-sm-4">
+            <button type="button" onclick="limpiardetalle()" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
 
 
      
