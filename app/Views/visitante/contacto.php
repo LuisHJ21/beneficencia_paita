@@ -1,5 +1,5 @@
 <?php $session=session(); ?>
-<section class="section-30 section-md-40 section-lg-66 section-xl-bottom-90 bg-gray-dark page-title-wrap" style="background-image: url(images/bg-image-1.jpg);">
+<section class="section-30 section-md-40 section-lg-66 section-xl-bottom-90 bg-gray-dark page-title-wrap" style="background-image: url(images/contactenos.png);">
         <div class="container">
           <div class="page-title">
             <h2>Contacto</h2>

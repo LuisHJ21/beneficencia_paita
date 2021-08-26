@@ -54,7 +54,7 @@
                       </li> -->
                       <li>
                         <div class="unit unit-horizontal unit-spacing-xs align-items-center">
-                          <div class="unit-body"><i class="fas fa-envelope mr-1"></i> Sbp_paita@hotmail.com</div>
+                          <div class="unit-body"><i class="fas fa-envelope mr-1"></i><a href="mailto:Sbp_paita@hotmail.com">Sbp_paita@hotmail.com</a> </div>
                         </div>
                       </li>
                     </ul> 

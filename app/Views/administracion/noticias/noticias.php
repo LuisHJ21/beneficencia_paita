@@ -46,14 +46,14 @@
                     <th>Titulo</th>
                     <th>Fecha</th>
                     <th>Anexar Imagenes</th>
-                    <th>Editar</th>
+                   
                     <th>Eliminar</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php foreach($noticias as $noti): ?>
                   <tr>
-                    <td><img style="width:100px"
+                    <td><img style="width:100px; max-height:150px ;"
                      src="<?php if(!$noti['imagen']){echo base_url('/images/no-imagen.jpg');}else{echo $noti['imagen'];}  ?>" alt=""></td>
                     <td><?php echo $noti['titulo'] ?></td>
                     <td><?php
@@ -73,7 +73,6 @@
                     ><i  class="fas fa-plus text-primary"></i></td>
 
 
-                    <td><i  class="fas fa-edit text-success"></i></td>
                     <td style="cursor: pointer;"
                     <?php 
                         echo "onclick='mdleliminar(\"".$noti['id_noticia']."\")'";
@@ -88,7 +87,6 @@
                     <th>Titulo</th>
                     <th>Fecha</th>
                     <th>Anexar Imagenes</th>
-                    <th>Editar</th>
                     <th>Eliminar</th>
                   </tr>
                   </tfoot>

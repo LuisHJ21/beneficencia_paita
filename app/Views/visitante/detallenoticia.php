@@ -15,9 +15,9 @@
     
 
     <!-- Set up your HTML -->
-    <div class="owl-carousel owl-theme">
+    <div class="owl-carousel owl-theme mb-5"  >
         <?php foreach($imagenes as $img): ?>
-        <div> <img class="img-fluid" src="<?php echo $img['imagen'] ?>" alt=""> </div>
+        <img class="item img-fluid" src="<?php echo $img['imagen'] ?>" alt="">
         <?php endforeach; ?>
        
     </div>

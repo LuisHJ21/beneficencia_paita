@@ -356,3 +356,9 @@ background-color: #D64045;
     color: #fff;
 
 }
+
+
+.owl-carousel .owl-item img
+{
+aspect-ratio: 1;
+}
