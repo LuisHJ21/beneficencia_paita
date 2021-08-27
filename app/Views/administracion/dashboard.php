@@ -12,9 +12,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Noticias</h3>
+                <h3 class="mb-5">Noticias</h3>
 
-                <p>New Orders</p>
+                
               </div>
               <div class="icon">
                 <i class="fas fa-newspaper"></i>
@@ -27,9 +27,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Mensajes</h3>
+                <h3 class="mb-5">Mensajes</h3>
 
-                <p>New Orders</p>
+              
               </div>
               <div class="icon">
                 <i class="fas fa-envelope"></i>
@@ -42,9 +42,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Usuarios</h3>
+                <h3 class="mb-5">Usuarios</h3>
 
-                <p>New Orders</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-plus"></i>
@@ -57,9 +56,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Slides</h3>
+                <h3 class="mb-5">Slides</h3>
 
-                <p>New Orders</p>
+               
               </div>
               <div class="icon">
                 <i class="fas fa-images"></i>
@@ -72,9 +71,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Directorio</h3>
+                <h3 class="mb-5">Directorio</h3>
 
-                <p>New Orders</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-tie"></i>
@@ -87,9 +85,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Nichos</h3>
+                <h3 class="mb-5">Nichos</h3>
 
-                <p>New Orders</p>
               </div>
               <div class="icon">
                 <i class="fas fa-tombstone"></i>
@@ -102,9 +99,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Contacto</h3>
+                <h3 class="mb-5">Contacto</h3>
 
-                <p>New Orders</p>
               </div>
               <div class="icon">
                 <i class="fas fa-info-circle"></i>
@@ -117,9 +113,8 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>SERFIN</h3>
+                <h3 class="mb-5">SERFIN</h3>
 
-                <p>New Orders</p>
               </div>
               <div class="icon">
                 <i class="fas fa-cross"></i>
