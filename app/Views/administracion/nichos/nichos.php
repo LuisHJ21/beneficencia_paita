@@ -378,8 +378,10 @@
         <input hidden="true" type="text" class="form-control" id="idagregarimagen" name="idagregarimagen"  required> 
           
           <div class="form-group">
-            <input type="file" class="form-control-file" name="imagensubir" required>
+            <input  onchange="return fileValidation()" accept=".jpeg,.jpg,.png" type="file" class="form-control-file" id="imagensubir" name="imagensubir" required>
           </div>
+
+          <span>*Solo formato .JPG, JPEG y PNG</span>
           
         </form>
       </div>
@@ -448,4 +450,25 @@ function mdlAgregar(tipo)
       btn2.setAttribute("disabled","");
       img.setAttribute("disabled","");
   }
+
+  
+  function fileValidation(){
+    var fileInput = document.getElementById('imagensubir');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Solo Se Permiten Archivos con extension .JPG, .JPEG y .PNG');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+}
 </script>

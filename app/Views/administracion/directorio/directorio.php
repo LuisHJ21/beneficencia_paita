@@ -120,8 +120,10 @@
             <input readonly type="text" class="form-control" id="tituloimagen" name="tituloimagen">
           </div>
           <div class="form-group">
-            <input type="file" class="form-control-file" name="imagensubir" required>
+            <input accept=".jpeg,.jpg,.png" onchange="return fileValidation()" type="file" class="form-control-file" id="imagensubir" name="imagensubir" required>
           </div>
+
+          <span>*Solo formato .JPG, JPEG y PNG</span>
           
         </form>
       </div>
@@ -244,6 +246,26 @@ function mdleditar(id,nombres,apellidos,cargo)
   $('#nombreseditar').val(nombres);
   $('#apellidoseditar').val(apellidos);
   $('#cargoeditar').val(cargo);
+}
+
+function fileValidation(){
+    var fileInput = document.getElementById('imagensubir');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(.jpg|.jpeg|.png)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Solo Se Permiten Archivos con extension .JPG, .JPEG y .PNG');
+        fileInput.value = '';
+        return false;
+    }else{
+        //Image preview
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'"/>';
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
 }
 
 </script>

@@ -135,6 +135,7 @@
                   <input hidden type="text" name="idsubir" id="idsubir">
                   <input type="file" name="imagenessubir[]" id="imagenessubir" multiple="multiple">
                 </form>
+                <span>*Solo formato .JPG, JPEG y PNG</span>
               </div>
               <div class="modal-footer">
                   <div class="container-fluid">

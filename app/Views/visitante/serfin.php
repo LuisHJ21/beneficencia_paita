@@ -68,6 +68,31 @@
     </div>
 
 
+    <div class="row">
+     <div class="col-12 pb-5">
+        <h3 class="text-center color-principal text-capitalize">galeria de fotos</h3>
+     </div>
+     
+    </div>
+
+    <?php if(count($galeria)==0){ ?>
+       <h5 class=" text-center">No hay Imagenes</h5>
+    <?php } ?>
+
+    <div class="card-columns">
+
+    
+
+    <?php foreach($galeria as $gal): ?>
+
+      <div class="card">
+        <img src="<?php echo $gal['imagen'] ?>" class="card-img" alt="...">
+      </div>
+    <?php endforeach; ?>
+      
+
+    </div>
+
   </div>
 
  

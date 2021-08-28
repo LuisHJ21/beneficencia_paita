@@ -326,6 +326,14 @@
                 </a>
               </li>
 
+
+              <li class="nav-item">
+                <a href="<?php echo base_url() ?>/admin/serfin/galeria" class="nav-link <?php if($titulo=="Galeria SERFIN" ) {echo "active"; }?>">
+                <i class="nav-icon fas fa-cross"></i>
+                  <p>Galeria SERFIN</p>
+                </a>
+              </li>
+
              
             </ul>
           </li>

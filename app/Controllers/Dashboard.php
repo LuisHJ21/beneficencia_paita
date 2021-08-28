@@ -15,7 +15,7 @@ class Dashboard extends BaseController
 
 	public function index()
 	{
-		$noread=$this->mensajes->orderBy('estado', 'no leido')->findall();
+		$noread=$this->mensajes->where('estado', 'no leido')->findall();
 		$titulo=['titulo'=>"DashBoard","noread"=>$noread];
 
         echo view('administracion/header',$titulo);

@@ -127,7 +127,7 @@
       <!-- seccion delPersonal -->
 
       <section class="section-60 ">
-        <div class="container">
+        <div class="container mb-3">
        
           <div class="row row-40 align-items-sm-center">
 

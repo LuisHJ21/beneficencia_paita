@@ -113,6 +113,10 @@ $routes->group('admin',function($routes)
 	$routes->add('serfin/guardarrequisitos','Serfinadmin::guardarrequisitos');
 	$routes->add('serfin/subirimagen','Serfinadmin::subirimagen');
 
+	$routes->add('serfin/galeria','Galeriaadmin::index');
+	$routes->add('serfin/galeria/agregar','Galeriaadmin::subirimagen');
+	$routes->add('serfin/galeria/eliminar','Galeriaadmin::eliminarimagen');
+
 	$routes->add('nichos','Nichosadmin::index');
 	$routes->add('nichos/agregar','Nichosadmin::agregar');
 	$routes->add('nichos/editarprecio','Nichosadmin::editarprecio');

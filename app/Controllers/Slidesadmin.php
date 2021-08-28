@@ -57,8 +57,11 @@ class Slidesadmin extends BaseController
 			$nombre= substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
 
 			$img= $this->request->getFile('imagensubir');
+
+			
 		
 			$extension=$img->guessExtension();
+			
 			$path= strtr($nombre," ", "_");
 			$path2=$path.'.'.$extension;
 			$img->move(WRITEPATH.'uploads',$path2);

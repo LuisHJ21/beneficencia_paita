@@ -7,6 +7,7 @@ use App\Models\SerfinModel;
 
 use App\Models\ServiciosModel;
 
+use App\Models\GaleriaModel;
 
 
 class Serfin extends BaseController
@@ -14,6 +15,7 @@ class Serfin extends BaseController
 
 	protected $serfin;
 	protected $servicio;
+	protected $galeria;
 
 
 
@@ -21,6 +23,7 @@ class Serfin extends BaseController
 	{
 		$this->serfin=new SerfinModel();
 		$this->servicio=new ServiciosModel();
+		$this->galeria=new GaleriaModel();
 
 		
 	}
@@ -29,11 +32,12 @@ class Serfin extends BaseController
 	{
 
 		$servicio=$this->servicio->where('id','2')->first();
+		$galeria=$this->galeria->findall();
 
 
 		$serfin=$this->serfin->first();
 
-		$data=["serfin"=>$serfin,"servicio"=>$servicio];
+		$data=["serfin"=>$serfin,"servicio"=>$servicio,"galeria"=>$galeria];
 		
 		
 		$titulo="SERFIN";
