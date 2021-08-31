@@ -75,6 +75,8 @@ class Filters extends BaseConfig
 				"/admin/slides",
 				"/admin/contacto",
 				"/admin/mensajes",
+				"/admin/serfin",
+				"/admin/serfin/galeria",
 				"/admin/nichos",
 				"/admin/usuarios",
 			]
