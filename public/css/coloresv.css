@@ -114,3 +114,18 @@ rd-navbar-fixed .rd-navbar-nav li:hover > a, .rd-navbar-fixed .rd-navbar-nav li:
 {
     color: #000 !important;
 }
+
+
+
+.page-item.active .page-link {
+   
+    background-color: var(--azul)  !important;
+    border-color: var(--azul)  !important;
+    color: #fff !important;
+}
+
+.page-link {
+  
+    color: var(--azul)  !important;
+  
+}

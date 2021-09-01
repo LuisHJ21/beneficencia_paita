@@ -55,6 +55,22 @@
             <?php $i+=1; endforeach; ?>
 
 
+
+            
+
+
           </div>
+
+
+          <div class="row justify-content-center">
+          <?= $pager->links() ?>
+
+          </div>
+
+       
+
+
+
+
         </div>
 </section>

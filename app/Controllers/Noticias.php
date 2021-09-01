@@ -19,10 +19,11 @@ class Noticias extends BaseController
 
 	public function index()
 	{
-		$noticias=$this->noticias->where('estado','Activo') ->orderBy('id_noticia', 'desc')->findall();
+		$noticias=$this->noticias->where('estado','Activo') ->orderBy('id_noticia', 'desc')->paginate(12);
+		$paginate=$this->noticias->pager;
 		$titulo="Noticias";
 
-		$data=["noticias"=>$noticias];
+		$data=["noticias"=>$noticias,'pager'=>$paginate];
 		$dataheader=["titulo"=>$titulo];
 
 		echo view('visitante/header',$dataheader);
